@@ -2,7 +2,7 @@
 
   <div>
       <% @movie_genres.each do |movie| %>
-        <%= link_to image_tag(movie.image_file_name), movie %>
+        <%= link_to main_image(movie), movie %>
       <% end %>
   </div>
 
