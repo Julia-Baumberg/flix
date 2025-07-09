@@ -1,0 +1,21 @@
+<h1>Review for <%= link_to @movie.title, @movie %></h1>
+<ul>
+    <h6>
+        Authored by: <%= link_to(@user.username, user_path(@user)) %>
+    </h6>
+    <h6>
+        Review details:
+        <ul>
+            <li>
+                <span class="stars">
+                    <%= render "shared/stars", percent: @review.stars_as_percent %>
+                </span>
+            </li>
+            <li>Comments: <%= @review.comment %></li>
+        </ul>
+    </h6>
+</ul>
+<section class="admin">
+    <%= link_to("Edit", edit_movie_review_path(@movie, @review), class: "button") %>
+    <%= link_to("Delete", movie_review_path(@movie, @review), class: "button", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+</section>

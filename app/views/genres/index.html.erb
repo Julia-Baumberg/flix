@@ -1,0 +1,14 @@
+<h1><%= pluralize(@genres.size, "Genre") %></h1>
+<ul>
+  <% @genres.each do |genre| %>
+    <li>
+      <%= link_to genre.name, genre %>
+      created
+      <%= time_ago_in_words(genre.created_at) %> ago
+    </li>
+  <% end %>
+</ul>
+
+<section class="admin">
+  <%= link_to "Add New Genre", new_genre_path, class: "button" %>
+</section>

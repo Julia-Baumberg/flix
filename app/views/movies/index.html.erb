@@ -1,0 +1,37 @@
+<div class="d-flex">
+  <div class="flex-column">
+    <% @movies.each do |movie| %>
+      <section class="movie">
+      <div class="image">
+        <%= image_tag movie.image_file_name %>
+      </div>
+        <div class="summary">
+          <h2>
+            <%= link_to movie.title, movie_path(movie) %>
+          </h2>
+          <h3>
+            <%= total_gross(movie) %>
+          </h3>
+            <span class="stars">
+              <% if movie.reviews.any? %>
+                <%= render "shared/stars", percent: movie.average_stars_as_percent %>
+              <% else %>
+                No Reviews
+              <% end %>
+            </span>
+          <p>
+            <%= truncate(movie.description, length: 150, separator: ' ') %>
+          </p>
+        </div>
+      </section>
+    <% end %>
+  </div>
+  <% if current_user_admin? %>
+    <div class="flex-column p-2">
+      <span class="text-danger">
+        Admin controls:
+      </span>
+      <%= link_to "Add New Movie", new_movie_path, class: "btn btn-secondary text-nowrap" %>
+    </div>
+  <% end %>
+</div>

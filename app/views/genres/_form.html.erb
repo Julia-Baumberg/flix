@@ -1,0 +1,7 @@
+<%= form_with(model: genre) do |f| %>
+<%= render "shared/errors", object: genre %>
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true %>
+
+  <%= f.submit %>
+<% end %>
