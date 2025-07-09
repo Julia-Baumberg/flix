@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
                   :total_gross,
                   :director,
                   :duration,
-                  :image_file_name, genre_ids: [])
+                  :main_image, genre_ids: [])
   end
 
   def set_movie
